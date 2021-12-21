@@ -1,0 +1,26 @@
+<ng-container [formGroup]="formCreator.form">
+  <ng-container *ngFor="let formItem of formCreator.fields; index as i">
+    <jhi-dynamic-form-field class="w-100" [formItem]="formItem" #dynamicFormFieldComponent>
+      <button
+        (click)="addNewField(i)"
+        *ngIf="formItem.multiple"
+        type="button"
+        class="btn btn-primary ml-1"
+        placement="bottom"
+        ngbTooltip="Ekle"
+      >
+        <fa-icon icon="plus"></fa-icon>
+      </button>
+      <button
+        (click)="removeField(formItem.id, dynamicFormFieldComponent)"
+        *ngIf="formItem.multiple"
+        type="button"
+        class="btn btn-primary ml-1"
+        placement="bottom"
+        ngbTooltip="Sil"
+      >
+        <fa-icon icon="minus"></fa-icon>
+      </button>
+    </jhi-dynamic-form-field>
+  </ng-container>
+</ng-container>

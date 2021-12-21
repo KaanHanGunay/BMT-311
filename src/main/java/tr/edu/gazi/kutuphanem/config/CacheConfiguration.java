@@ -48,6 +48,12 @@ public class CacheConfiguration {
             createCache(cm, tr.edu.gazi.kutuphanem.domain.User.class.getName());
             createCache(cm, tr.edu.gazi.kutuphanem.domain.Authority.class.getName());
             createCache(cm, tr.edu.gazi.kutuphanem.domain.User.class.getName() + ".authorities");
+            createCache(cm, tr.edu.gazi.kutuphanem.domain.Publisher.class.getName());
+            createCache(cm, tr.edu.gazi.kutuphanem.domain.Author.class.getName());
+            createCache(cm, tr.edu.gazi.kutuphanem.domain.Book.class.getName());
+            createCache(cm, tr.edu.gazi.kutuphanem.domain.Author.class.getName() + ".books");
+            createCache(cm, tr.edu.gazi.kutuphanem.domain.Publisher.class.getName() + ".books");
+            createCache(cm, tr.edu.gazi.kutuphanem.domain.Borrowing.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

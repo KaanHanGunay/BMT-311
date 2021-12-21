@@ -1,0 +1,28 @@
+{
+  "kutuphanemApp": {
+    "borrowing": {
+      "home": {
+        "title": "Borrowings",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Borrowing",
+        "createOrEditLabel": "Create or edit a Borrowing",
+        "notFound": "No Borrowings found"
+      },
+      "created": "A new Borrowing is created with identifier {{ param }}",
+      "updated": "A Borrowing is updated with identifier {{ param }}",
+      "deleted": "A Borrowing is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Borrowing {{ id }}?"
+      },
+      "detail": {
+        "title": "Borrowing"
+      },
+      "id": "ID",
+      "borrowingDate": "Borrowing Date",
+      "deliveryDate": "Delivery Date",
+      "comment": "Comment",
+      "user": "User",
+      "book": "Book"
+    }
+  }
+}

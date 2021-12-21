@@ -1,0 +1,92 @@
+<div>
+  <h2 id="page-heading" data-cy="BorrowingHeading">
+    <span jhiTranslate="kutuphanemApp.borrowing.home.title">Borrowings</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="kutuphanemApp.borrowing.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-borrowing"
+        [routerLink]="['/borrowing/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="kutuphanemApp.borrowing.home.createLabel"> Create a new Borrowing </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="borrowings?.length === 0">
+    <span jhiTranslate="kutuphanemApp.borrowing.home.notFound">No borrowings found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="borrowings && borrowings.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="kutuphanemApp.borrowing.borrowingDate">Borrowing Date</span></th>
+          <th scope="col"><span jhiTranslate="kutuphanemApp.borrowing.deliveryDate">Delivery Date</span></th>
+          <th scope="col"><span jhiTranslate="kutuphanemApp.borrowing.comment">Comment</span></th>
+          <th scope="col"><span jhiTranslate="kutuphanemApp.borrowing.user">User</span></th>
+          <th scope="col"><span jhiTranslate="kutuphanemApp.borrowing.book">Book</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let borrowing of borrowings; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/borrowing', borrowing.id, 'view']">{{ borrowing.id }}</a>
+          </td>
+          <td>{{ borrowing.borrowingDate | formatMediumDate }}</td>
+          <td>{{ borrowing.deliveryDate | formatMediumDate }}</td>
+          <td>{{ borrowing.comment }}</td>
+          <td>
+            {{ borrowing.user?.login }}
+          </td>
+          <td>
+            <div *ngIf="borrowing.book">
+              <a [routerLink]="['/book', borrowing.book?.id, 'view']">{{ borrowing.book?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/borrowing', borrowing.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/borrowing', borrowing.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(borrowing)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

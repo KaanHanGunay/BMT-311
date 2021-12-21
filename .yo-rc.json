@@ -40,6 +40,8 @@
     "devServerPort": 4200,
     "clientPackageManager": "npm",
     "languages": ["tr"],
-    "enableGradleEnterprise": false
+    "enableGradleEnterprise": false,
+    "lastLiquibaseTimestamp": 1640105320000,
+    "entities": ["Publisher", "Author", "Book", "Borrowing"]
   }
 }

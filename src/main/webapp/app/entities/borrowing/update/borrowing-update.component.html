@@ -1,0 +1,116 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-borrowing-heading" data-cy="BorrowingCreateUpdateHeading" jhiTranslate="kutuphanemApp.borrowing.home.createOrEditLabel">
+        Create or edit a Borrowing
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="kutuphanemApp.borrowing.borrowingDate" for="field_borrowingDate"
+            >Borrowing Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_borrowingDate"
+              data-cy="borrowingDate"
+              type="text"
+              class="form-control"
+              name="borrowingDate"
+              ngbDatepicker
+              #borrowingDateDp="ngbDatepicker"
+              formControlName="borrowingDate"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="borrowingDateDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="kutuphanemApp.borrowing.deliveryDate" for="field_deliveryDate"
+            >Delivery Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_deliveryDate"
+              data-cy="deliveryDate"
+              type="text"
+              class="form-control"
+              name="deliveryDate"
+              ngbDatepicker
+              #deliveryDateDp="ngbDatepicker"
+              formControlName="deliveryDate"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="deliveryDateDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="kutuphanemApp.borrowing.comment" for="field_comment">Comment</label>
+          <textarea class="form-control" name="comment" id="field_comment" data-cy="comment" formControlName="comment"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="kutuphanemApp.borrowing.user" for="field_user">User</label>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.login }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="kutuphanemApp.borrowing.book" for="field_book">Book</label>
+          <select class="form-control" id="field_book" data-cy="book" name="book" formControlName="book">
+            <option *ngIf="!editForm.get('book')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="bookOption.id === editForm.get('book')!.value?.id ? editForm.get('book')!.value : bookOption"
+              *ngFor="let bookOption of booksSharedCollection; trackBy: trackBookById"
+            >
+              {{ bookOption.id }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['book'])!.invalid && (editForm.get(['book'])!.dirty || editForm.get(['book'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['book'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
