@@ -1,16 +1,22 @@
 import { Component, OnInit, RendererFactory2, Renderer2 } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRouteSnapshot, NavigationEnd } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
 import * as dayjs from 'dayjs';
 
 import { AccountService } from 'app/core/auth/account.service';
+import { AppState } from '../../store/app.state';
+import { getLoading } from '../../store/shared/shared.selector';
 
 @Component({
   selector: 'jhi-main',
   templateUrl: './main.component.html',
 })
 export class MainComponent implements OnInit {
+  loading$!: Observable<boolean>;
+
   private renderer: Renderer2;
 
   constructor(
@@ -18,12 +24,15 @@ export class MainComponent implements OnInit {
     private titleService: Title,
     private router: Router,
     private translateService: TranslateService,
+    private store: Store<AppState>,
     rootRenderer: RendererFactory2
   ) {
     this.renderer = rootRenderer.createRenderer(document.querySelector('html'), null);
   }
 
   ngOnInit(): void {
+    this.loading$ = this.store.select(getLoading);
+
     // try to log in automatically
     this.accountService.identity().subscribe();
 

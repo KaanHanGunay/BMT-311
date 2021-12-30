@@ -18,5 +18,6 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     LoadingSpinnerComponent,
   ],
   imports: [CommonModule, SharedModule],
+  exports: [LoadingSpinnerComponent],
 })
 export class ComponentsModule {}
