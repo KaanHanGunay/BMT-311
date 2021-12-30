@@ -72,6 +72,7 @@
     "packaging": "jar"
   },
   "dependencies": {
+    "@angular/animations": "12.2.12",
     "@angular/common": "12.2.12",
     "@angular/compiler": "12.2.12",
     "@angular/core": "12.2.12",
@@ -95,6 +96,7 @@
     "bootswatch": "4.6.1",
     "dayjs": "1.10.7",
     "ngx-infinite-scroll": "10.0.1",
+    "ngx-toastr": "^14.2.1",
     "ngx-webstorage": "8.0.0",
     "rxjs": "6.6.7",
     "swagger-ui-dist": "4.1.2",

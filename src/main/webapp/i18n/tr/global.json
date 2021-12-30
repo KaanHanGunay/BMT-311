@@ -53,11 +53,11 @@
         "authenticated": {
           "prefix": "",
           "link": "Giriş",
-          "suffix": " yapmak istiyorsanız, varsayılan hesaplardan birini deneyebilirsiniz:<br/>- Yönetici (kullanıcı adı=\"admin\" ve şifre=\"admin\") <br/>- Kullanıcı (kullanıcı adı=\"user\" and şifre=\"user\")."
+          "suffix": " yaparak kitapları arama ve ödünç alma işlemlerini yapabilirsiniz. "
         },
         "register": {
           "noaccount": "Henüz bir hesabınız yok mu?",
-          "link": "Yeni hesap oluştur"
+          "link": "Yeni hesap oluşturun"
         }
       },
       "error": {
