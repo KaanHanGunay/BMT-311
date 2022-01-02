@@ -32,7 +32,11 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
         },
         {
           path: 'books',
-          loadChildren: () => import('./pages/books/books.module').then(m => m.BooksModule),
+          loadChildren: () => import('./components/books/components.module').then(m => m.ComponentsModule),
+        },
+        {
+          path: 'borrow',
+          loadChildren: () => import('./components/borrowing/borrowing.module').then(m => m.BorrowingModule),
         },
         ...LAYOUT_ROUTES,
       ],

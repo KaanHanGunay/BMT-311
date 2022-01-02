@@ -1,14 +1,14 @@
 import { IAuthor } from 'app/entities/author/author.model';
-import { IPublisher } from 'app/entities/publisher/publisher.model';
+import { IBorrowing } from 'app/entities/borrowing/borrowing.model';
 
 export interface IBook {
   id?: number;
   title?: string;
   numOfPage?: number | null;
-  coverContentType?: string | null;
-  cover?: string | null;
-  author?: IAuthor;
-  publisher?: IPublisher | null;
+  coverUrl?: string | null;
+  publisher?: string | null;
+  author?: IAuthor | null;
+  borrowings?: IBorrowing[] | null;
 }
 
 export class Book implements IBook {
@@ -16,10 +16,10 @@ export class Book implements IBook {
     public id?: number,
     public title?: string,
     public numOfPage?: number | null,
-    public coverContentType?: string | null,
-    public cover?: string | null,
-    public author?: IAuthor,
-    public publisher?: IPublisher | null
+    public coverUrl?: string | null,
+    public publisher?: string | null,
+    public author?: IAuthor | null,
+    public borrowings?: IBorrowing[] | null
   ) {}
 }
 

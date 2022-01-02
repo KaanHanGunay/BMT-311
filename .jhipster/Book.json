@@ -10,9 +10,12 @@
       "fieldType": "Integer"
     },
     {
-      "fieldName": "cover",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "image"
+      "fieldName": "coverUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "publisher",
+      "fieldType": "String"
     }
   ],
   "relationships": [
@@ -20,21 +23,20 @@
       "relationshipName": "author",
       "otherEntityName": "author",
       "relationshipType": "many-to-one",
-      "relationshipValidateRules": ["required"],
       "otherEntityField": "id"
     },
     {
-      "relationshipName": "publisher",
-      "otherEntityName": "publisher",
-      "relationshipType": "many-to-one",
-      "otherEntityField": "id"
+      "relationshipName": "borrowing",
+      "otherEntityName": "borrowing",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "book"
     }
   ],
   "service": "serviceImpl",
-  "dto": "mapstruct",
-  "jpaMetamodelFiltering": false,
+  "dto": "no",
+  "jpaMetamodelFiltering": true,
   "readOnly": false,
   "pagination": "no",
   "name": "Book",
-  "changelogDate": "20211221163837"
+  "changelogDate": "20220101110013"
 }

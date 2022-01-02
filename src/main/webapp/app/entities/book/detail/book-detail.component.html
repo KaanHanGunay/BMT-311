@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
   <div class="col-8">
     <div *ngIf="book">
-      <h2 data-cy="bookDetailsHeading"><span jhiTranslate="kutuphanemApp.book.detail.title">Book</span></h2>
+      <h2 data-cy="bookDetailsHeading"><span jhiTranslate="kutuphaneApp.book.detail.title">Book</span></h2>
 
       <hr />
 
@@ -14,33 +14,26 @@
         <dd>
           <span>{{ book.id }}</span>
         </dd>
-        <dt><span jhiTranslate="kutuphanemApp.book.title">Title</span></dt>
+        <dt><span jhiTranslate="kutuphaneApp.book.title">Title</span></dt>
         <dd>
           <span>{{ book.title }}</span>
         </dd>
-        <dt><span jhiTranslate="kutuphanemApp.book.numOfPage">Num Of Page</span></dt>
+        <dt><span jhiTranslate="kutuphaneApp.book.numOfPage">Num Of Page</span></dt>
         <dd>
           <span>{{ book.numOfPage }}</span>
         </dd>
-        <dt><span jhiTranslate="kutuphanemApp.book.cover">Cover</span></dt>
+        <dt><span jhiTranslate="kutuphaneApp.book.coverUrl">Cover Url</span></dt>
         <dd>
-          <div *ngIf="book.cover">
-            <a (click)="openFile(book.cover, book.coverContentType)">
-              <img [src]="'data:' + book.coverContentType + ';base64,' + book.cover" style="max-width: 100%" alt="book image" />
-            </a>
-            {{ book.coverContentType }}, {{ byteSize(book.cover) }}
-          </div>
+          <span>{{ book.coverUrl }}</span>
         </dd>
-        <dt><span jhiTranslate="kutuphanemApp.book.author">Author</span></dt>
+        <dt><span jhiTranslate="kutuphaneApp.book.publisher">Publisher</span></dt>
+        <dd>
+          <span>{{ book.publisher }}</span>
+        </dd>
+        <dt><span jhiTranslate="kutuphaneApp.book.author">Author</span></dt>
         <dd>
           <div *ngIf="book.author">
             <a [routerLink]="['/author', book.author?.id, 'view']">{{ book.author?.id }}</a>
-          </div>
-        </dd>
-        <dt><span jhiTranslate="kutuphanemApp.book.publisher">Publisher</span></dt>
-        <dd>
-          <div *ngIf="book.publisher">
-            <a [routerLink]="['/publisher', book.publisher?.id, 'view']">{{ book.publisher?.id }}</a>
           </div>
         </dd>
       </dl>

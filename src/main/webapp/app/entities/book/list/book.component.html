@@ -1,11 +1,11 @@
 <div>
   <h2 id="page-heading" data-cy="BookHeading">
-    <span jhiTranslate="kutuphanemApp.book.home.title">Books</span>
+    <span jhiTranslate="kutuphaneApp.book.home.title">Books</span>
 
     <div class="d-flex justify-content-end">
       <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
-        <span jhiTranslate="kutuphanemApp.book.home.refreshListLabel">Refresh List</span>
+        <span jhiTranslate="kutuphaneApp.book.home.refreshListLabel">Refresh List</span>
       </button>
 
       <button
@@ -15,7 +15,7 @@
         [routerLink]="['/book/new']"
       >
         <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="kutuphanemApp.book.home.createLabel"> Create a new Book </span>
+        <span jhiTranslate="kutuphaneApp.book.home.createLabel"> Create a new Book </span>
       </button>
     </div>
   </h2>
@@ -25,7 +25,7 @@
   <jhi-alert></jhi-alert>
 
   <div class="alert alert-warning" id="no-result" *ngIf="books?.length === 0">
-    <span jhiTranslate="kutuphanemApp.book.home.notFound">No books found</span>
+    <span jhiTranslate="kutuphaneApp.book.home.notFound">No books found</span>
   </div>
 
   <div class="table-responsive" id="entities" *ngIf="books && books.length > 0">
@@ -33,11 +33,11 @@
       <thead>
         <tr>
           <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
-          <th scope="col"><span jhiTranslate="kutuphanemApp.book.title">Title</span></th>
-          <th scope="col"><span jhiTranslate="kutuphanemApp.book.numOfPage">Num Of Page</span></th>
-          <th scope="col"><span jhiTranslate="kutuphanemApp.book.cover">Cover</span></th>
-          <th scope="col"><span jhiTranslate="kutuphanemApp.book.author">Author</span></th>
-          <th scope="col"><span jhiTranslate="kutuphanemApp.book.publisher">Publisher</span></th>
+          <th scope="col"><span jhiTranslate="kutuphaneApp.book.title">Title</span></th>
+          <th scope="col"><span jhiTranslate="kutuphaneApp.book.numOfPage">Num Of Page</span></th>
+          <th scope="col"><span jhiTranslate="kutuphaneApp.book.coverUrl">Cover Url</span></th>
+          <th scope="col"><span jhiTranslate="kutuphaneApp.book.publisher">Publisher</span></th>
+          <th scope="col"><span jhiTranslate="kutuphaneApp.book.author">Author</span></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -48,20 +48,11 @@
           </td>
           <td>{{ book.title }}</td>
           <td>{{ book.numOfPage }}</td>
-          <td>
-            <a *ngIf="book.cover" (click)="openFile(book.cover, book.coverContentType)">
-              <img [src]="'data:' + book.coverContentType + ';base64,' + book.cover" style="max-height: 30px" alt="book image" />
-            </a>
-            <span *ngIf="book.cover">{{ book.coverContentType }}, {{ byteSize(book.cover) }}</span>
-          </td>
+          <td>{{ book.coverUrl }}</td>
+          <td>{{ book.publisher }}</td>
           <td>
             <div *ngIf="book.author">
               <a [routerLink]="['/author', book.author?.id, 'view']">{{ book.author?.id }}</a>
-            </div>
-          </td>
-          <td>
-            <div *ngIf="book.publisher">
-              <a [routerLink]="['/publisher', book.publisher?.id, 'view']">{{ book.publisher?.id }}</a>
             </div>
           </td>
           <td class="text-right">

@@ -4,7 +4,7 @@
     <persistence-units>
       <persistence-unit name="Default">
         <packages>
-          <package value="tr.edu.gazi.kutuphanem" />
+          <package value="tr.edu.gazi.kutuphane.config" />
         </packages>
       </persistence-unit>
     </persistence-units>

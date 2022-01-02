@@ -6,6 +6,7 @@ import { isPresent } from 'app/core/util/operators';
 import { ApplicationConfigService } from 'app/core/config/application-config.service';
 import { createRequestOption } from 'app/core/request/request-util';
 import { IBook, getBookIdentifier } from '../book.model';
+import { BookSearch } from '../../../shared/models/book-search.model';
 
 export type EntityResponseType = HttpResponse<IBook>;
 export type EntityArrayResponseType = HttpResponse<IBook[]>;
@@ -39,6 +40,10 @@ export class BookService {
 
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
+
+  search(params: BookSearch): Observable<EntityArrayResponseType> {
+    return this.http.post<IBook[]>(`${this.resourceUrl}/search`, params, { observe: 'response' });
   }
 
   addBookToCollectionIfMissing(bookCollection: IBook[], ...booksToCheck: (IBook | null | undefined)[]): IBook[] {

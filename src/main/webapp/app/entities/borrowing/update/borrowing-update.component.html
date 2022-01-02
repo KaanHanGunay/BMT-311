@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
   <div class="col-8">
     <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-      <h2 id="jhi-borrowing-heading" data-cy="BorrowingCreateUpdateHeading" jhiTranslate="kutuphanemApp.borrowing.home.createOrEditLabel">
+      <h2 id="jhi-borrowing-heading" data-cy="BorrowingCreateUpdateHeading" jhiTranslate="kutuphaneApp.borrowing.home.createOrEditLabel">
         Create or edit a Borrowing
       </h2>
 
@@ -14,7 +14,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="kutuphanemApp.borrowing.borrowingDate" for="field_borrowingDate"
+          <label class="form-control-label" jhiTranslate="kutuphaneApp.borrowing.borrowingDate" for="field_borrowingDate"
             >Borrowing Date</label
           >
           <div class="input-group">
@@ -37,7 +37,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="kutuphanemApp.borrowing.deliveryDate" for="field_deliveryDate"
+          <label class="form-control-label" jhiTranslate="kutuphaneApp.borrowing.deliveryDate" for="field_deliveryDate"
             >Delivery Date</label
           >
           <div class="input-group">
@@ -60,12 +60,12 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="kutuphanemApp.borrowing.comment" for="field_comment">Comment</label>
+          <label class="form-control-label" jhiTranslate="kutuphaneApp.borrowing.comment" for="field_comment">Comment</label>
           <textarea class="form-control" name="comment" id="field_comment" data-cy="comment" formControlName="comment"></textarea>
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="kutuphanemApp.borrowing.user" for="field_user">User</label>
+          <label class="form-control-label" jhiTranslate="kutuphaneApp.borrowing.user" for="field_user">User</label>
           <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user">
             <option [ngValue]="null"></option>
             <option
@@ -78,9 +78,9 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="kutuphanemApp.borrowing.book" for="field_book">Book</label>
+          <label class="form-control-label" jhiTranslate="kutuphaneApp.borrowing.book" for="field_book">Book</label>
           <select class="form-control" id="field_book" data-cy="book" name="book" formControlName="book">
-            <option *ngIf="!editForm.get('book')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="null"></option>
             <option
               [ngValue]="bookOption.id === editForm.get('book')!.value?.id ? editForm.get('book')!.value : bookOption"
               *ngFor="let bookOption of booksSharedCollection; trackBy: trackBookById"
@@ -88,11 +88,6 @@
               {{ bookOption.id }}
             </option>
           </select>
-        </div>
-        <div *ngIf="editForm.get(['book'])!.invalid && (editForm.get(['book'])!.dirty || editForm.get(['book'])!.touched)">
-          <small class="form-text text-danger" *ngIf="editForm.get(['book'])?.errors?.required" jhiTranslate="entity.validation.required">
-            This field is required.
-          </small>
         </div>
       </div>
 

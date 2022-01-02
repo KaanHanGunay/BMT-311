@@ -1,0 +1,75 @@
+<div class="col">
+  <div class="d-flex flex-row justify-content-center">
+    <form [formGroup]="searchForm" style="width: 500px">
+      <mat-card class="w-100">
+        <mat-card-header>
+          <mat-card-title>Kitap Arama</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="row p-2">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Kitap Adı</mat-label>
+              <input formControlName="bookTitle" matInput />
+            </mat-form-field>
+          </div>
+          <div class="row p-2">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Yazar Adı</mat-label>
+              <input formControlName="authorName" matInput />
+            </mat-form-field>
+          </div>
+          <div class="row p-2">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Yazar Soyadı</mat-label>
+              <input formControlName="authorSurname" matInput />
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="col">
+            <div class="d-flex flex-row justify-content-center">
+              <button (click)="search()" mat-raised-button color="primary">Ara</button>
+            </div>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+
+  <div *ngIf="dataSource" class="row mt-2 w-100">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-100">
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Başlık</th>
+        <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="authorName">
+        <th mat-header-cell *matHeaderCellDef>İsim</th>
+        <td mat-cell *matCellDef="let element">{{ element.author.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="authorSurname">
+        <th mat-header-cell *matHeaderCellDef>Soyisim</th>
+        <td mat-cell *matCellDef="let element">{{ element.author.surname }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>İşlemler</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="col">
+            <div class="row">
+              <button (click)="borrowBook(element)" class="btn btn-primary">Ödünç Al</button>
+              <button *jhiHasAnyAuthority="'ROLE_ADMIN'" (click)="navigateToUpdatePage(element)" class="btn btn-primary ml-1">
+                Düzenle
+              </button>
+              <button *jhiHasAnyAuthority="'ROLE_ADMIN'" (click)="removeBook(element)" class="btn btn-danger ml-1">Sil</button>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

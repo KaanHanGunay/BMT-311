@@ -1,0 +1,38 @@
+<div *ngIf="borrowForm" class="col">
+  <div class="d-flex flex-row justify-content-center">
+    <form [formGroup]="borrowForm" style="width: 500px">
+      <mat-card class="w-100">
+        <mat-card-header>
+          <mat-card-title>Kitap Teslim Etme</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="row p-2">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Kitap Adı</mat-label>
+              <input formControlName="book" matInput />
+            </mat-form-field>
+          </div>
+          <div class="row p-2">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Ödünç Alma Tarihi</mat-label>
+              <input formControlName="borrowingDate" matInput />
+            </mat-form-field>
+          </div>
+          <div class="row p-2">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Kitap Yorumu</mat-label>
+              <textarea formControlName="comment" matInput rows="5"></textarea>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="col">
+            <div class="d-flex flex-row justify-content-center">
+              <button (click)="deliver()" mat-raised-button color="primary" [disabled]="borrowForm.invalid">Teslim Et</button>
+            </div>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</div>

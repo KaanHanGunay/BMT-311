@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -7,13 +7,8 @@ import { finalize, map } from 'rxjs/operators';
 
 import { IBook, Book } from '../book.model';
 import { BookService } from '../service/book.service';
-import { AlertError } from 'app/shared/alert/alert-error.model';
-import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
-import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
 import { IAuthor } from 'app/entities/author/author.model';
 import { AuthorService } from 'app/entities/author/service/author.service';
-import { IPublisher } from 'app/entities/publisher/publisher.model';
-import { PublisherService } from 'app/entities/publisher/service/publisher.service';
 
 @Component({
   selector: 'jhi-book-update',
@@ -23,25 +18,19 @@ export class BookUpdateComponent implements OnInit {
   isSaving = false;
 
   authorsSharedCollection: IAuthor[] = [];
-  publishersSharedCollection: IPublisher[] = [];
 
   editForm = this.fb.group({
     id: [],
     title: [null, [Validators.required]],
     numOfPage: [],
-    cover: [],
-    coverContentType: [],
-    author: [null, Validators.required],
+    coverUrl: [],
     publisher: [],
+    author: [],
   });
 
   constructor(
-    protected dataUtils: DataUtils,
-    protected eventManager: EventManager,
     protected bookService: BookService,
     protected authorService: AuthorService,
-    protected publisherService: PublisherService,
-    protected elementRef: ElementRef,
     protected activatedRoute: ActivatedRoute,
     protected fb: FormBuilder
   ) {}
@@ -52,31 +41,6 @@ export class BookUpdateComponent implements OnInit {
 
       this.loadRelationshipsOptions();
     });
-  }
-
-  byteSize(base64String: string): string {
-    return this.dataUtils.byteSize(base64String);
-  }
-
-  openFile(base64String: string, contentType: string | null | undefined): void {
-    this.dataUtils.openFile(base64String, contentType);
-  }
-
-  setFileData(event: Event, field: string, isImage: boolean): void {
-    this.dataUtils.loadFileToForm(event, this.editForm, field, isImage).subscribe({
-      error: (err: FileLoadError) =>
-        this.eventManager.broadcast(new EventWithContent<AlertError>('kutuphanemApp.error', { ...err, key: 'error.file.' + err.key })),
-    });
-  }
-
-  clearInputImage(field: string, fieldContentType: string, idInput: string): void {
-    this.editForm.patchValue({
-      [field]: null,
-      [fieldContentType]: null,
-    });
-    if (idInput && this.elementRef.nativeElement.querySelector('#' + idInput)) {
-      this.elementRef.nativeElement.querySelector('#' + idInput).value = null;
-    }
   }
 
   previousState(): void {
@@ -94,10 +58,6 @@ export class BookUpdateComponent implements OnInit {
   }
 
   trackAuthorById(index: number, item: IAuthor): number {
-    return item.id!;
-  }
-
-  trackPublisherById(index: number, item: IPublisher): number {
     return item.id!;
   }
 
@@ -125,17 +85,12 @@ export class BookUpdateComponent implements OnInit {
       id: book.id,
       title: book.title,
       numOfPage: book.numOfPage,
-      cover: book.cover,
-      coverContentType: book.coverContentType,
-      author: book.author,
+      coverUrl: book.coverUrl,
       publisher: book.publisher,
+      author: book.author,
     });
 
     this.authorsSharedCollection = this.authorService.addAuthorToCollectionIfMissing(this.authorsSharedCollection, book.author);
-    this.publishersSharedCollection = this.publisherService.addPublisherToCollectionIfMissing(
-      this.publishersSharedCollection,
-      book.publisher
-    );
   }
 
   protected loadRelationshipsOptions(): void {
@@ -144,16 +99,6 @@ export class BookUpdateComponent implements OnInit {
       .pipe(map((res: HttpResponse<IAuthor[]>) => res.body ?? []))
       .pipe(map((authors: IAuthor[]) => this.authorService.addAuthorToCollectionIfMissing(authors, this.editForm.get('author')!.value)))
       .subscribe((authors: IAuthor[]) => (this.authorsSharedCollection = authors));
-
-    this.publisherService
-      .query()
-      .pipe(map((res: HttpResponse<IPublisher[]>) => res.body ?? []))
-      .pipe(
-        map((publishers: IPublisher[]) =>
-          this.publisherService.addPublisherToCollectionIfMissing(publishers, this.editForm.get('publisher')!.value)
-        )
-      )
-      .subscribe((publishers: IPublisher[]) => (this.publishersSharedCollection = publishers));
   }
 
   protected createFromForm(): IBook {
@@ -162,10 +107,9 @@ export class BookUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       title: this.editForm.get(['title'])!.value,
       numOfPage: this.editForm.get(['numOfPage'])!.value,
-      coverContentType: this.editForm.get(['coverContentType'])!.value,
-      cover: this.editForm.get(['cover'])!.value,
-      author: this.editForm.get(['author'])!.value,
+      coverUrl: this.editForm.get(['coverUrl'])!.value,
       publisher: this.editForm.get(['publisher'])!.value,
+      author: this.editForm.get(['author'])!.value,
     };
   }
 }

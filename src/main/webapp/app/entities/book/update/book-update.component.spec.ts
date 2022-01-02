@@ -11,8 +11,6 @@ import { BookService } from '../service/book.service';
 import { IBook, Book } from '../book.model';
 import { IAuthor } from 'app/entities/author/author.model';
 import { AuthorService } from 'app/entities/author/service/author.service';
-import { IPublisher } from 'app/entities/publisher/publisher.model';
-import { PublisherService } from 'app/entities/publisher/service/publisher.service';
 
 import { BookUpdateComponent } from './book-update.component';
 
@@ -22,7 +20,6 @@ describe('Book Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let bookService: BookService;
   let authorService: AuthorService;
-  let publisherService: PublisherService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -37,7 +34,6 @@ describe('Book Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     bookService = TestBed.inject(BookService);
     authorService = TestBed.inject(AuthorService);
-    publisherService = TestBed.inject(PublisherService);
 
     comp = fixture.componentInstance;
   });
@@ -62,38 +58,16 @@ describe('Book Management Update Component', () => {
       expect(comp.authorsSharedCollection).toEqual(expectedCollection);
     });
 
-    it('Should call Publisher query and add missing value', () => {
-      const book: IBook = { id: 456 };
-      const publisher: IPublisher = { id: 65411 };
-      book.publisher = publisher;
-
-      const publisherCollection: IPublisher[] = [{ id: 41410 }];
-      jest.spyOn(publisherService, 'query').mockReturnValue(of(new HttpResponse({ body: publisherCollection })));
-      const additionalPublishers = [publisher];
-      const expectedCollection: IPublisher[] = [...additionalPublishers, ...publisherCollection];
-      jest.spyOn(publisherService, 'addPublisherToCollectionIfMissing').mockReturnValue(expectedCollection);
-
-      activatedRoute.data = of({ book });
-      comp.ngOnInit();
-
-      expect(publisherService.query).toHaveBeenCalled();
-      expect(publisherService.addPublisherToCollectionIfMissing).toHaveBeenCalledWith(publisherCollection, ...additionalPublishers);
-      expect(comp.publishersSharedCollection).toEqual(expectedCollection);
-    });
-
     it('Should update editForm', () => {
       const book: IBook = { id: 456 };
       const author: IAuthor = { id: 5685 };
       book.author = author;
-      const publisher: IPublisher = { id: 56473 };
-      book.publisher = publisher;
 
       activatedRoute.data = of({ book });
       comp.ngOnInit();
 
       expect(comp.editForm.value).toEqual(expect.objectContaining(book));
       expect(comp.authorsSharedCollection).toContain(author);
-      expect(comp.publishersSharedCollection).toContain(publisher);
     });
   });
 
@@ -166,14 +140,6 @@ describe('Book Management Update Component', () => {
       it('Should return tracked Author primary key', () => {
         const entity = { id: 123 };
         const trackResult = comp.trackAuthorById(0, entity);
-        expect(trackResult).toEqual(entity.id);
-      });
-    });
-
-    describe('trackPublisherById', () => {
-      it('Should return tracked Publisher primary key', () => {
-        const entity = { id: 123 };
-        const trackResult = comp.trackPublisherById(0, entity);
         expect(trackResult).toEqual(entity.id);
       });
     });

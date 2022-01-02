@@ -1,5 +1,5 @@
 {
-  "kutuphanemApp": {
+  "kutuphaneApp": {
     "book": {
       "home": {
         "title": "Books",
@@ -20,9 +20,10 @@
       "id": "ID",
       "title": "Title",
       "numOfPage": "Num Of Page",
-      "cover": "Cover",
+      "coverUrl": "Cover Url",
+      "publisher": "Publisher",
       "author": "Author",
-      "publisher": "Publisher"
+      "borrowing": "Borrowing"
     }
   }
 }

@@ -27,20 +27,14 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
-import { ToastrModule } from 'ngx-toastr';
-import { EffectsModule } from '@ngrx/effects';
-import { appEffects } from './store/app.effect';
-import { StoreModule } from '@ngrx/store';
-import { appReducer } from './store/app.reducer';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { DEBUG_INFO_ENABLED } from './app.constants';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { CustomSerializer } from './store/router/custom-serializer';
-import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    FlexLayoutModule,
     SharedModule,
     HomeModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
@@ -61,24 +55,6 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
         useFactory: missingTranslationHandler,
       },
     }),
-    ToastrModule.forRoot({
-      timeOut: 5000,
-      positionClass: 'toast-bottom-right',
-      preventDuplicates: true,
-      autoDismiss: true,
-      closeButton: true,
-      progressBar: true,
-    }),
-    EffectsModule.forRoot(appEffects),
-    StoreModule.forRoot(appReducer),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25,
-      logOnly: DEBUG_INFO_ENABLED,
-      autoPause: true,
-    }),
-    StoreRouterConnectingModule.forRoot({
-      serializer: CustomSerializer,
-    }),
   ],
   providers: [
     Title,
@@ -86,15 +62,7 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
     { provide: NgbDateAdapter, useClass: NgbDateDayjsAdapter },
     httpInterceptorProviders,
   ],
-  declarations: [
-    MainComponent,
-    NavbarComponent,
-    ErrorComponent,
-    PageRibbonComponent,
-    ActiveMenuDirective,
-    FooterComponent,
-    LoadingScreenComponent,
-  ],
+  declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   bootstrap: [MainComponent],
 })
 export class AppModule {

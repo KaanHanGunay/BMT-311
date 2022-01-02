@@ -3,7 +3,7 @@ import { IBook } from 'app/entities/book/book.model';
 
 export interface IAuthor {
   id?: number;
-  name?: string | null;
+  name?: string;
   surname?: string | null;
   birthday?: dayjs.Dayjs | null;
   died?: dayjs.Dayjs | null;
@@ -14,7 +14,7 @@ export interface IAuthor {
 export class Author implements IAuthor {
   constructor(
     public id?: number,
-    public name?: string | null,
+    public name?: string,
     public surname?: string | null,
     public birthday?: dayjs.Dayjs | null,
     public died?: dayjs.Dayjs | null,

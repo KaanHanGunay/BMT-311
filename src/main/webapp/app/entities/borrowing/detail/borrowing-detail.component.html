@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
   <div class="col-8">
     <div *ngIf="borrowing">
-      <h2 data-cy="borrowingDetailsHeading"><span jhiTranslate="kutuphanemApp.borrowing.detail.title">Borrowing</span></h2>
+      <h2 data-cy="borrowingDetailsHeading"><span jhiTranslate="kutuphaneApp.borrowing.detail.title">Borrowing</span></h2>
 
       <hr />
 
@@ -14,23 +14,23 @@
         <dd>
           <span>{{ borrowing.id }}</span>
         </dd>
-        <dt><span jhiTranslate="kutuphanemApp.borrowing.borrowingDate">Borrowing Date</span></dt>
+        <dt><span jhiTranslate="kutuphaneApp.borrowing.borrowingDate">Borrowing Date</span></dt>
         <dd>
           <span>{{ borrowing.borrowingDate | formatMediumDate }}</span>
         </dd>
-        <dt><span jhiTranslate="kutuphanemApp.borrowing.deliveryDate">Delivery Date</span></dt>
+        <dt><span jhiTranslate="kutuphaneApp.borrowing.deliveryDate">Delivery Date</span></dt>
         <dd>
           <span>{{ borrowing.deliveryDate | formatMediumDate }}</span>
         </dd>
-        <dt><span jhiTranslate="kutuphanemApp.borrowing.comment">Comment</span></dt>
+        <dt><span jhiTranslate="kutuphaneApp.borrowing.comment">Comment</span></dt>
         <dd>
           <span>{{ borrowing.comment }}</span>
         </dd>
-        <dt><span jhiTranslate="kutuphanemApp.borrowing.user">User</span></dt>
+        <dt><span jhiTranslate="kutuphaneApp.borrowing.user">User</span></dt>
         <dd>
           <span>{{ borrowing.user?.login }}</span>
         </dd>
-        <dt><span jhiTranslate="kutuphanemApp.borrowing.book">Book</span></dt>
+        <dt><span jhiTranslate="kutuphaneApp.borrowing.book">Book</span></dt>
         <dd>
           <div *ngIf="borrowing.book">
             <a [routerLink]="['/book', borrowing.book?.id, 'view']">{{ borrowing.book?.id }}</a>

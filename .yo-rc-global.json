@@ -1,7 +1,7 @@
 {
   "generator-jhipster:7.4.1": {
     "promptValues": {
-      "packageName": "tr.edu.gazi.kutuphanem",
+      "packageName": "tr.edu.gazi.kutuphane",
       "nativeLanguage": "tr"
     }
   }

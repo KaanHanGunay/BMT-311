@@ -23,8 +23,8 @@ describe('Book Service', () => {
       id: 0,
       title: 'AAAAAAA',
       numOfPage: 0,
-      coverContentType: 'image/png',
-      cover: 'AAAAAAA',
+      coverUrl: 'AAAAAAA',
+      publisher: 'AAAAAAA',
     };
   });
 
@@ -62,7 +62,8 @@ describe('Book Service', () => {
           id: 1,
           title: 'BBBBBB',
           numOfPage: 1,
-          cover: 'BBBBBB',
+          coverUrl: 'BBBBBB',
+          publisher: 'BBBBBB',
         },
         elemDefault
       );
@@ -80,7 +81,8 @@ describe('Book Service', () => {
       const patchObject = Object.assign(
         {
           numOfPage: 1,
-          cover: 'BBBBBB',
+          coverUrl: 'BBBBBB',
+          publisher: 'BBBBBB',
         },
         new Book()
       );
@@ -102,7 +104,8 @@ describe('Book Service', () => {
           id: 1,
           title: 'BBBBBB',
           numOfPage: 1,
-          cover: 'BBBBBB',
+          coverUrl: 'BBBBBB',
+          publisher: 'BBBBBB',
         },
         elemDefault
       );
@@ -154,7 +157,7 @@ describe('Book Service', () => {
       });
 
       it('should add only unique Book to an array', () => {
-        const bookArray: IBook[] = [{ id: 123 }, { id: 456 }, { id: 78687 }];
+        const bookArray: IBook[] = [{ id: 123 }, { id: 456 }, { id: 16911 }];
         const bookCollection: IBook[] = [{ id: 123 }];
         expectedResult = service.addBookToCollectionIfMissing(bookCollection, ...bookArray);
         expect(expectedResult).toHaveLength(3);

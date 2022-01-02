@@ -1,29 +1,29 @@
 {
-  "kutuphanemApp": {
+  "kutuphaneApp": {
     "author": {
       "home": {
-        "title": "Authors",
-        "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new Author",
-        "createOrEditLabel": "Create or edit a Author",
-        "notFound": "No Authors found"
+        "title": "Yazarlar",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni yazar oluştur",
+        "createOrEditLabel": "Yazar oluştur veya güncelle",
+        "notFound": "Yazar bulunamadı"
       },
-      "created": "A new Author is created with identifier {{ param }}",
-      "updated": "A Author is updated with identifier {{ param }}",
-      "deleted": "A Author is deleted with identifier {{ param }}",
+      "created": "{{ param }} id ile yeni yazar oluşturuldu.",
+      "updated": "{{ param }} id'li yazar güncellendi.",
+      "deleted": "{{ param }} id'li yazar silindi.",
       "delete": {
-        "question": "Are you sure you want to delete Author {{ id }}?"
+        "question": "{{ id }} id'li yazarı silmek istediğinize emin misiniz?"
       },
       "detail": {
-        "title": "Author"
+        "title": "Yazar"
       },
       "id": "ID",
-      "name": "Name",
-      "surname": "Surname",
-      "birthday": "Birthday",
-      "died": "Died",
-      "nationality": "Nationality",
-      "book": "Book"
+      "name": "İsim",
+      "surname": "Soyisim",
+      "birthday": "Doğum Tarihi",
+      "died": "Ölüm Tarihi",
+      "nationality": "Milliyet",
+      "book": "Kitap"
     }
   }
 }

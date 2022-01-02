@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { finalize, map } from 'rxjs/operators';
@@ -31,7 +31,7 @@ export class BorrowingUpdateComponent implements OnInit {
     deliveryDate: [],
     comment: [],
     user: [],
-    book: [null, Validators.required],
+    book: [],
   });
 
   constructor(
@@ -63,7 +63,7 @@ export class BorrowingUpdateComponent implements OnInit {
   setFileData(event: Event, field: string, isImage: boolean): void {
     this.dataUtils.loadFileToForm(event, this.editForm, field, isImage).subscribe({
       error: (err: FileLoadError) =>
-        this.eventManager.broadcast(new EventWithContent<AlertError>('kutuphanemApp.error', { ...err, key: 'error.file.' + err.key })),
+        this.eventManager.broadcast(new EventWithContent<AlertError>('kutuphaneApp.error', { ...err, key: 'error.file.' + err.key })),
     });
   }
 

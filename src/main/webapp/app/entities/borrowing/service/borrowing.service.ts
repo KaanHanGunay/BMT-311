@@ -26,6 +26,12 @@ export class BorrowingService {
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
+  save(bookId: number): Observable<EntityResponseType> {
+    return this.http
+      .post<IBorrowing>(`${this.resourceUrl}/book=${bookId}`, bookId, { observe: 'response' })
+      .pipe(map(res => this.convertDateFromServer(res)));
+  }
+
   update(borrowing: IBorrowing): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(borrowing);
     return this.http
@@ -50,6 +56,12 @@ export class BorrowingService {
     const options = createRequestOption(req);
     return this.http
       .get<IBorrowing[]>(this.resourceUrl, { params: options, observe: 'response' })
+      .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+  }
+
+  getMyBorrowings(): Observable<EntityArrayResponseType> {
+    return this.http
+      .get<IBorrowing[]>(`${this.resourceUrl}/mine`, { observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 

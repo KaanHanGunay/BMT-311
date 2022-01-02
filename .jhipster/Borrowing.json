@@ -27,15 +27,14 @@
       "relationshipName": "book",
       "otherEntityName": "book",
       "relationshipType": "many-to-one",
-      "relationshipValidateRules": ["required"],
       "otherEntityField": "id"
     }
   ],
   "service": "serviceImpl",
-  "dto": "mapstruct",
+  "dto": "no",
   "jpaMetamodelFiltering": true,
   "readOnly": false,
   "pagination": "no",
   "name": "Borrowing",
-  "changelogDate": "20211221164840"
+  "changelogDate": "20220101110423"
 }

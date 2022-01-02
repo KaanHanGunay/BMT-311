@@ -8,7 +8,7 @@ export interface IBorrowing {
   deliveryDate?: dayjs.Dayjs | null;
   comment?: string | null;
   user?: IUser | null;
-  book?: IBook;
+  book?: IBook | null;
 }
 
 export class Borrowing implements IBorrowing {
@@ -18,7 +18,7 @@ export class Borrowing implements IBorrowing {
     public deliveryDate?: dayjs.Dayjs | null,
     public comment?: string | null,
     public user?: IUser | null,
-    public book?: IBook
+    public book?: IBook | null
   ) {}
 }
 

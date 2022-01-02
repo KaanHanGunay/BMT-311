@@ -1,0 +1,52 @@
+<div class="col">
+  <div class="d-flex flex-row justify-content-center">
+    <form [formGroup]="createForm" style="width: 500px">
+      <mat-card class="w-100">
+        <mat-card-header>
+          <mat-card-title>Kitap Bağışı</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="row p-2">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Kitap Adı</mat-label>
+              <input formControlName="title" matInput />
+            </mat-form-field>
+          </div>
+          <div class="row p-2">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Sayfa Sayısı</mat-label>
+              <input formControlName="numOfPage" type="number" matInput />
+            </mat-form-field>
+          </div>
+          <div class="row p-2">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Kapak Fotoğrafı</mat-label>
+              <input formControlName="coverUrl" matInput />
+            </mat-form-field>
+          </div>
+          <div class="row p-2">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Yayıncı</mat-label>
+              <input formControlName="publisher" matInput />
+            </mat-form-field>
+          </div>
+          <div class="row p-2">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Yazar</mat-label>
+              <mat-select formControlName="author">
+                <mat-option *ngFor="let author of authors" [value]="author">{{ author.name }} {{ author.surname }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="col">
+            <div class="d-flex flex-row justify-content-center">
+              <button (click)="createBook()" mat-raised-button color="primary" [disabled]="createForm.invalid">Kaydet</button>
+            </div>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</div>

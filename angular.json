@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "kutuphanem": {
+    "kutuphane": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -84,15 +84,15 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "kutuphanem:build:development",
+            "browserTarget": "kutuphane:build:development",
             "port": 4200
           },
           "configurations": {
             "production": {
-              "browserTarget": "kutuphanem:build:production"
+              "browserTarget": "kutuphane:build:production"
             },
             "development": {
-              "browserTarget": "kutuphanem:build:development"
+              "browserTarget": "kutuphane:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -106,7 +106,7 @@
       }
     }
   },
-  "defaultProject": "kutuphanem",
+  "defaultProject": "kutuphane",
   "cli": {
     "packageManager": "npm"
   }

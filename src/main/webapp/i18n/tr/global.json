@@ -1,13 +1,12 @@
 {
   "global": {
-    "title": "Kutuphanem",
+    "title": "Kutuphane",
     "browsehappy": "<strong>Çok eski</strong> bir tarayıcı kullanıyorsunuz. Lütfen kullanım kalitenizi arttırmak için <a href=\"http://browsehappy.com/?locale=tr\">tarayıcınızı yükseltin</a>.",
     "menu": {
       "home": "Ana Sayfa",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Varlıklar",
-        "publisher": "Publisher",
         "author": "Author",
         "book": "Book",
         "borrowing": "Borrowing",
@@ -53,11 +52,11 @@
         "authenticated": {
           "prefix": "",
           "link": "Giriş",
-          "suffix": " yaparak kitapları arama ve ödünç alma işlemlerini yapabilirsiniz. "
+          "suffix": " yapmak istiyorsanız, varsayılan hesaplardan birini deneyebilirsiniz:<br/>- Yönetici (kullanıcı adı=\"admin\" ve şifre=\"admin\") <br/>- Kullanıcı (kullanıcı adı=\"user\" and şifre=\"user\")."
         },
         "register": {
-          "noaccount": "Henüz bir hesabınız yok mu?",
-          "link": "Yeni hesap oluşturun"
+          "noaccount": "Kitap ödünç almak, teslim etmek veya kitap araması yapmak istiyorsanız lütfen giriş yapınız. Henüz bir hesabınız yok mu?",
+          "link": "Yeni hesap oluştur"
         }
       },
       "error": {

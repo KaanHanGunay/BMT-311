@@ -1,14 +1,14 @@
 # This configuration is intended for development purpose, it's **your** responsibility to harden it for production
 version: '3.8'
 services:
-  kutuphanem-app:
-    image: kutuphanem
+  kutuphane-app:
+    image: kutuphane
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - SPRING_PROFILES_ACTIVE=prod,api-docs
       - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
-      - SPRING_DATASOURCE_URL=jdbc:oracle:thin:@kutuphanem-oracle:1521:kutuphanem
-      - SPRING_LIQUIBASE_URL=jdbc:oracle:thin:@kutuphanem-oracle:1521:kutuphanem
+      - SPRING_DATASOURCE_URL=jdbc:oracle:thin:@kutuphane-oracle:1521:kutuphane
+      - SPRING_LIQUIBASE_URL=jdbc:oracle:thin:@kutuphane-oracle:1521:kutuphane
       - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
     # If you want to expose these ports outside your dev PC,
     # remove the "127.0.0.1:" prefix

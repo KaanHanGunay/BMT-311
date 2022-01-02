@@ -1,7 +1,7 @@
 {
   "generator-jhipster": {
     "applicationType": "monolith",
-    "baseName": "kutuphanem",
+    "baseName": "kutuphane",
     "jhipsterVersion": "7.4.1",
     "skipUserManagement": false,
     "skipCheckLengthOfIdentifier": false,
@@ -13,11 +13,11 @@
     "blueprints": [],
     "otherModules": [],
     "pages": [],
-    "creationTimestamp": 1640103425557,
+    "creationTimestamp": 1641033862613,
     "serviceDiscoveryType": "no",
     "reactive": false,
-    "authenticationType": "jwt",
-    "packageName": "tr.edu.gazi.kutuphanem",
+    "authenticationType": "session",
+    "packageName": "tr.edu.gazi.kutuphane",
     "serverPort": "8080",
     "cacheProvider": "ehcache",
     "enableHibernateCache": true,
@@ -32,16 +32,16 @@
     "enableSwaggerCodegen": false,
     "clientFramework": "angularX",
     "withAdminUi": true,
-    "clientTheme": "simplex",
+    "clientTheme": "flatly",
     "clientThemeVariant": "primary",
     "enableTranslation": true,
     "nativeLanguage": "tr",
-    "jwtSecretKey": "ZTU0Mzk2YWEzYjQ3ODA5NjVlNzgzYzM3ZGNjNzhkNDQ3NzdiODA1NDFhMGRlZGI5NzU5ZDE5YTdjN2VkZDc5NmViYmQ4ZjE0ZTkxNDkwYzg5M2U5ZjFmYzVjYTE0NzNmMzQxZTFjNDQ5MDVhZmU4Y2RkMGU4N2E5OGE2ZWJkZjE=",
+    "rememberMeKey": "4eefed5c0b6a170760d9e2564a4bf17af78ada98b7d13b51d1d82f66ee705e92a06ae471d9384e3d107d0eacaadc5e07b07c",
     "devServerPort": 4200,
     "clientPackageManager": "npm",
     "languages": ["tr"],
     "enableGradleEnterprise": false,
-    "lastLiquibaseTimestamp": 1640105320000,
-    "entities": ["Publisher", "Author", "Book", "Borrowing"]
+    "lastLiquibaseTimestamp": 1641035063000,
+    "entities": ["Author", "Book", "Borrowing"]
   }
 }

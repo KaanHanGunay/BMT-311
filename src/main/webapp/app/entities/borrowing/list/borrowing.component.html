@@ -1,11 +1,11 @@
 <div>
   <h2 id="page-heading" data-cy="BorrowingHeading">
-    <span jhiTranslate="kutuphanemApp.borrowing.home.title">Borrowings</span>
+    <span jhiTranslate="kutuphaneApp.borrowing.home.title">Borrowings</span>
 
     <div class="d-flex justify-content-end">
       <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
-        <span jhiTranslate="kutuphanemApp.borrowing.home.refreshListLabel">Refresh List</span>
+        <span jhiTranslate="kutuphaneApp.borrowing.home.refreshListLabel">Refresh List</span>
       </button>
 
       <button
@@ -15,7 +15,7 @@
         [routerLink]="['/borrowing/new']"
       >
         <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="kutuphanemApp.borrowing.home.createLabel"> Create a new Borrowing </span>
+        <span jhiTranslate="kutuphaneApp.borrowing.home.createLabel"> Create a new Borrowing </span>
       </button>
     </div>
   </h2>
@@ -25,7 +25,7 @@
   <jhi-alert></jhi-alert>
 
   <div class="alert alert-warning" id="no-result" *ngIf="borrowings?.length === 0">
-    <span jhiTranslate="kutuphanemApp.borrowing.home.notFound">No borrowings found</span>
+    <span jhiTranslate="kutuphaneApp.borrowing.home.notFound">No borrowings found</span>
   </div>
 
   <div class="table-responsive" id="entities" *ngIf="borrowings && borrowings.length > 0">
@@ -33,11 +33,11 @@
       <thead>
         <tr>
           <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
-          <th scope="col"><span jhiTranslate="kutuphanemApp.borrowing.borrowingDate">Borrowing Date</span></th>
-          <th scope="col"><span jhiTranslate="kutuphanemApp.borrowing.deliveryDate">Delivery Date</span></th>
-          <th scope="col"><span jhiTranslate="kutuphanemApp.borrowing.comment">Comment</span></th>
-          <th scope="col"><span jhiTranslate="kutuphanemApp.borrowing.user">User</span></th>
-          <th scope="col"><span jhiTranslate="kutuphanemApp.borrowing.book">Book</span></th>
+          <th scope="col"><span jhiTranslate="kutuphaneApp.borrowing.borrowingDate">Borrowing Date</span></th>
+          <th scope="col"><span jhiTranslate="kutuphaneApp.borrowing.deliveryDate">Delivery Date</span></th>
+          <th scope="col"><span jhiTranslate="kutuphaneApp.borrowing.comment">Comment</span></th>
+          <th scope="col"><span jhiTranslate="kutuphaneApp.borrowing.user">User</span></th>
+          <th scope="col"><span jhiTranslate="kutuphaneApp.borrowing.book">Book</span></th>
           <th scope="col"></th>
         </tr>
       </thead>

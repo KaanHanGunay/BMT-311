@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
   <div class="col-8">
     <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-      <h2 id="jhi-author-heading" data-cy="AuthorCreateUpdateHeading" jhiTranslate="kutuphanemApp.author.home.createOrEditLabel">
+      <h2 id="jhi-author-heading" data-cy="AuthorCreateUpdateHeading" jhiTranslate="kutuphaneApp.author.home.createOrEditLabel">
         Create or edit a Author
       </h2>
 
@@ -14,17 +14,22 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="kutuphanemApp.author.name" for="field_name">Name</label>
+          <label class="form-control-label" jhiTranslate="kutuphaneApp.author.name" for="field_name">Name</label>
           <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="kutuphanemApp.author.surname" for="field_surname">Surname</label>
+          <label class="form-control-label" jhiTranslate="kutuphaneApp.author.surname" for="field_surname">Surname</label>
           <input type="text" class="form-control" name="surname" id="field_surname" data-cy="surname" formControlName="surname" />
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="kutuphanemApp.author.birthday" for="field_birthday">Birthday</label>
+          <label class="form-control-label" jhiTranslate="kutuphaneApp.author.birthday" for="field_birthday">Birthday</label>
           <div class="input-group">
             <input
               id="field_birthday"
@@ -43,7 +48,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="kutuphanemApp.author.died" for="field_died">Died</label>
+          <label class="form-control-label" jhiTranslate="kutuphaneApp.author.died" for="field_died">Died</label>
           <div class="input-group">
             <input
               id="field_died"
@@ -62,7 +67,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="kutuphanemApp.author.nationality" for="field_nationality">Nationality</label>
+          <label class="form-control-label" jhiTranslate="kutuphaneApp.author.nationality" for="field_nationality">Nationality</label>
           <input
             type="text"
             class="form-control"
