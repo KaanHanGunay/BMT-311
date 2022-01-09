@@ -28,7 +28,13 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public Author save(Author author) {
         log.debug("Request to save Author : {}", author);
-        return authorRepository.save(author);
+        return authorRepository.CREATE_AUTHOR(
+            author.getName(),
+            author.getSurname(),
+            author.getBirthday(),
+            author.getDied(),
+            author.getNationality()
+        );
     }
 
     @Override

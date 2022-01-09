@@ -98,6 +98,7 @@ spring:
       hibernate.jdbc.batch_size: 25
       hibernate.order_inserts: true
       hibernate.order_updates: true
+      hibernate.proc.param_null_passing: true
       # modify fetch size as necessary
       hibernate.jdbc.fetch_size: 150
       hibernate.criteria.literal_handling_mode: BIND

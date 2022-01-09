@@ -60,11 +60,8 @@ public class AuthorResource {
         if (author.getId() != null) {
             throw new BadRequestAlertException("A new author cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        Author result = authorService.save(author);
-        return ResponseEntity
-            .created(new URI("/api/authors/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
-            .body(result);
+        authorService.save(author);
+        return ResponseEntity.noContent().build();
     }
 
     /**

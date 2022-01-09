@@ -10,7 +10,7 @@ import { BookSearch } from 'app/shared/models/book-search.model';
 import { BookService } from 'app/entities/book/service/book.service';
 import { IBook } from 'app/entities/book/book.model';
 import { RemoveDialogComponent } from '../remove-dialog/remove-dialog.component';
-import { BorrowingService } from '../../../entities/borrowing/service/borrowing.service';
+import { BorrowingService } from 'app/entities/borrowing/service/borrowing.service';
 import { BorrowDialogComponent } from '../borrow-dialog/borrow-dialog.component';
 
 @Component({
@@ -95,9 +95,14 @@ export class BookSearchComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.borrowSub = this.borrowService.save(book.id!).subscribe(() => {
-          this._snackBar.open('Ödünç alma başarılı bir şekilde eklendi.', 'Kapat', { duration: 2000 });
-        });
+        this.borrowSub = this.borrowService.save(book.id!).subscribe(
+          () => {
+            this._snackBar.open('Ödünç alma başarılı bir şekilde eklendi.', 'Kapat', { duration: 2000 });
+          },
+          () => {
+            this._snackBar.open('En fazla 3 kitap ödünç alınabilir.', 'Kapat', { duration: 2000 });
+          }
+        );
       }
     });
   }
